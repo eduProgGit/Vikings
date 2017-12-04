@@ -37,25 +37,25 @@ Battle.prototype.fight= function(){/*Yo de mñn el segundo bucle sobra con un wh
 			for (var i = 0; i < this.armyViking.length; i++) {
 
 			saxonRandom=Math.floor(Math.random()*this.armySaxon.length);	
-			var enemySaxon=this.armySaxon[saxonRandom];
-			var enemyViking=this.armyViking[i];
+			var eSaxon=this.armySaxon[saxonRandom];
+			var eViking=this.armyViking[i];
 
 			
-			enemyViking.hit(enemySaxon);
+			eViking.hit(eSaxon);
 			if(this.armySaxon[saxonRandom].health<= 0){
 					this.armySaxon.splice(saxonRandom,1);
-					if(this.armySaxon.length < 0){
+					if(this.armySaxon.length == 0){
 					 this.turns=0;
 					 break;
 					}
 
 			}else{
-				enemySaxon.hit(enemyViking);
+				eSaxon.hit(eViking);
 			}
 
 			if(this.armyViking[i].health <= 0 ){
 					this.armyViking.splice(i,1);
-					if(this.armyViking.length < 0){
+					if(this.armyViking.length == 0){
 					 this.turns=0;
 					 break;
 				}
@@ -68,7 +68,8 @@ Battle.prototype.fight= function(){/*Yo de mñn el segundo bucle sobra con un wh
 }
 
 Battle.prototype.showWinner = function (){
-	console.log("And the winner is: "+this.winner);
+	console.log("And the winner is: "+this.winner+"\nSurvivors:"+this.winner.length);
+
 }
 
 Pit.prototype.figth = function(){
@@ -130,8 +131,8 @@ function generateArmySaxon(numSax,max,min){
 var v1= generarViking(100,10);
 var v2= generarSaxon(50,10);
 var pit = new Pit(v1,v2,2);
-var armySaxon=generateArmySaxon(10,50,10);
-var armyViking=generateArmyViking(15,100,50);
+var armySaxon=generateArmySaxon(100000,50,10);
+var armyViking=generateArmyViking(15000,100,50);
 var battle= new Battle(armyViking,armySaxon);
 
 var army = generateArmySaxon(1000,100,0);
