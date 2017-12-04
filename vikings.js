@@ -24,11 +24,17 @@ Pit.prototype.figth = function(){
 		this.v2.hit(this.v1);
 		this.turns--;
 	}
+
+	this.winner = this.viking1.health > this.viking2.health ? this.viking1 : this.viking2;
+
 	
+}
+Pit.prototype.showWinner = function (){
+	console.log("And the winner is: "+this.winner.name);
 }
 
 var v1= new Viking("Asdas",100,10);
-var v2= new Viking("odor",99,11);
+var v2= new Viking("odor",80,11);
 var pit = new Pit(v1,v2,2);
 /*var v1_vidaInicial=viking1.health;
 	var v2_vidaInicial=viking2.health;
